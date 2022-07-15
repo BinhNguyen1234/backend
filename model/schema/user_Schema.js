@@ -1,10 +1,11 @@
 const mongoose = require('mongoose');
 const usersSchema = mongoose.Schema({
-    _id : mongoose.Schema.Types.ObjectId,
+    _id: mongoose.Schema.Types.ObjectId,
     username: {type : String, unique: true},
     password: {type: String},
-    token : {type: String, require: true},
-    create: {type: Date, default: Date.now}
+    
+    // token : {type: String, require: true},
+    // create: {type: Date, default: Date.now}
 
 })
  const blogSchema = mongoose.Schema({

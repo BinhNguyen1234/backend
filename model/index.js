@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-function handle(Model,{...object}){
- return result = new Model({object})//test
-}
+
 /** 
 Create an document base on model and write into DB
 * 
@@ -27,6 +25,20 @@ async function mongooseHandle(ModelMongoose,object){
     })
     
 }
-module.exports ={
-    mongooseHandle
-}
+const usersSchema = mongoose.Schema({
+    _id: mongoose.Schema.Types.ObjectId,
+    username: {type : String, unique: true},
+    password: {type: String},
+    
+    // token : {type: String, require: true},
+    // create: {type: Date, default: Date.now}
+
+})
+const User = mongoose.model("customer",usersSchema)
+
+const usDoc = new User ({
+    _id : new mongoose.Types.ObjectId(),
+    username : "binh",
+    password: "12345",
+})
+mongooseHandle(User, usDoc)
