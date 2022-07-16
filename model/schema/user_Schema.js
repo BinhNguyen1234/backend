@@ -9,7 +9,7 @@ const usersSchema = mongoose.Schema({
 
 })
  const blogSchema = mongoose.Schema({
-    _id,
+    _id : mongoose.Schema.Types.ObjectId,
     url: {type: String, unique : true},
     title: {type: String, unique: true},
     content: {type: String},

@@ -18,13 +18,6 @@ const PORT = 2000;
 
 //** Middle ware */
 const cors = require('cors')
-app.use(session({
-    secret : "secret",
-    saveUninitialized: true,
-    resave: true
-  }))
- 
-app.use(passport.session());
 app.use(cors())
 app.use(bodyParser.json());
 app.listen(PORT,()=>{
