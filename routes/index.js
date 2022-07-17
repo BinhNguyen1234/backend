@@ -1,4 +1,4 @@
-const {Login} = require('../routes/Login')
+const Login = require('./login')
 const express = require("express")
 const Test = express.Router()
 module.exports = routesAppend;

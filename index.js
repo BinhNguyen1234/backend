@@ -4,6 +4,7 @@ const routesAppend = require("./routes/")
 const bodyParser = require("body-parser")
 const User = require("./model/model/User")
 const PORT = 2000;
+const staticServer = require('serve-static')
 const cookie = require('cookie-parser')
 
 
@@ -13,7 +14,10 @@ const cookie = require('cookie-parser')
 
 
 //** Middle ware */
-app.use(express.static("build"))
+
+app.use(staticServer("build"),(req,res,next)=>{
+    res.redirect("../")
+})
 app.use(cookie())
 const cors = require('cors')
 app.use(cors())
