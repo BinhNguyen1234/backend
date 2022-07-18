@@ -1,10 +1,10 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local');
-const session = require('express-session');
 
 
-function loginAuth(req, res , next){
-    //--- Strategy for auth
+function loginAuth(){
+   return function (req, res , next){   
+    // passport.initialize()(req,res,next)//init passport for login
     passport.use( new LocalStrategy((username,password, passToSerial)=>{
         console.log("client try to auth")
         console.log(username, password)
@@ -21,6 +21,7 @@ function loginAuth(req, res , next){
         return setToSession(null,{username, password});
     })
     passport.authenticate('local')(req,res,next)
+}
 }
 
 module.exports = loginAuth;
