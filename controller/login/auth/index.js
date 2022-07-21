@@ -3,23 +3,28 @@ const LocalStrategy = require('passport-local');
 
 
 function loginAuth(){
+
+    passport.serializeUser(({username, password}, setToSessionCb)=>{
+        return setToSessionCb(null,{username, password});
+    })
+
+    
+
    return function (req, res , next){   
     // passport.initialize()(req,res,next)//init passport for login
-    passport.use( new LocalStrategy((username,password, passToSerial)=>{
-        console.log("client try to auth")
-        console.log(username, password)
+    passport.use( new LocalStrategy((username,password, passToSerialUserCb)=>{
+        console.log(`client (username "${username}") try to auth`)
+    
         if(username ==='admin' && password === '170116Abc'){
-            return passToSerial(null,{username, password, message: "Verified"})
+            return passToSerialUserCb(null,{username, password, message: "Verified"})
         }
         else {
-            return passToSerial(true, false)
+            return passToSerialUserCb(null,false)
         }
     }))
 
     //--- pass to session after authe succed
-    passport.serializeUser(({username, password}, setToSession)=>{
-        return setToSession(null,{username, password});
-    })
+   
     passport.authenticate('local')(req,res,next)
 }
 }
