@@ -1,11 +1,18 @@
 const passport = require('passport');
 
 
-
+function checkReq(req,res,next){
+    if(!req.user){
+        res.status(401).send("Het phien dang nhap, dang nhap lai")
+    }
+    else{
+        next()
+    }
+}
 function  isAuth(){
 
    passport.deserializeUser((user,done)=>{
-    if(user.username === "admin" && user.password==="170116Abc"){
+    if(user.username === "admin" && user.password==="4fd6c0dfcac719f96423f3de90d0ab72de4534f62c51cccc94cdcb787cec07da"){
        
         done(null, user)
     }
@@ -19,7 +26,9 @@ function  isAuth(){
    return function(req, res, next){ 
     
         passport.initialize()(req, res , ()=>{
-            passport.session()(req,res,next)
+            passport.session()(req,res,()=>{
+                checkReq(req, res, next)
+            })
         })
     
         

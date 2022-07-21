@@ -15,7 +15,7 @@ function loginAuth(){
     passport.use( new LocalStrategy((username,password, passToSerialUserCb)=>{
         console.log(`client (username "${username}") try to auth`)
     
-        if(username ==='admin' && password === '170116Abc'){
+        if(username ==='admin' && password === '4fd6c0dfcac719f96423f3de90d0ab72de4534f62c51cccc94cdcb787cec07da'){
             return passToSerialUserCb(null,{username, password, message: "Verified"})
         }
         else {

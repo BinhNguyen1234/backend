@@ -15,7 +15,7 @@ const passport = require('passport');
 //     }
 // })
 writeblog.use("/",isAuth(), (req,res)=>{
-    console.log(req.user);
+    res.status(200).send("xac thuc thanh cong")
 }); 
 // writeblog.all("/",(req,res)=>{
 //     res.send("Ok")
