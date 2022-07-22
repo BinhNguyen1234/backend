@@ -1,9 +1,10 @@
 const express = require('express');
 const Login = express.Router();
 const auth = require("./auth")
-const writeblog = require("./writeblog")
+const writeblog = require("./auth/writeblog")
 const session = require("express-session");
-const passport = require("passport")
+const passport = require("passport");
+
 
 //-- use middleware on root
 
@@ -24,16 +25,11 @@ session(
     saveUninitialized: true,
     resave: true}
 ),
-    
-    // session(
-    // {secret : "secret",
-    // saveUninitialized: true,
-    // resave: true}
-    // )
+
 )
+
 Login.use("/auth", auth)
 
-// Login.use("/writeblog", writeblog)
-Login.use("/writeblog", writeblog)
+
 
 module.exports = Login;
