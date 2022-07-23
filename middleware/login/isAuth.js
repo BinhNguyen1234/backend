@@ -2,6 +2,7 @@ const passport = require('passport');
 
 
 function checkReq(req,res,next){
+    console.log(req.user)
     if(!req.user){
         res.status(401).send("Het phien dang nhap, dang nhap lai")
     }
@@ -24,7 +25,7 @@ function  isAuth(){
    
     
    return function(req, res, next){ 
-    
+        console.log(req.session)
         passport.initialize()(req, res , ()=>{
             passport.session()(req,res,()=>{
                 checkReq(req, res, next)
