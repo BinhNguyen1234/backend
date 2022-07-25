@@ -25,7 +25,7 @@ function  isAuth(){
    
     
    return function(req, res, next){ 
-        console.log(req.session)
+        
         passport.initialize()(req, res , ()=>{
             passport.session()(req,res,()=>{
                 checkReq(req, res, next)
