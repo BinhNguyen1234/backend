@@ -26,9 +26,9 @@ async function  postBlog (req,res){
     writer = await user.findOne({"username": req.user.username})
     console.log('writer', writer)
     }catch{(e)=>{
-        console.log('have erroe  when find user to write blog\n', err)
+        console.log('have error  when find user to write blog\n', err)
     }}
-    
+     
     const post = new postModel({
         '_writter': writer._id,
         'title' : req.body.data.title,
