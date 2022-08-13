@@ -1,5 +1,6 @@
 const User = require('../../../../model/user')
 const {postModel} = require('../../../../model/post')
+const user = require ('../../../../model/user')
 //--- test crud user in mongodb
 // function post(req,res){
 //     let user = new User({
@@ -20,8 +21,16 @@ const {postModel} = require('../../../../model/post')
 // }
 
 async function  postBlog (req,res){
-    console.log(req.body)
+    let writer;
+    try{
+    writer = await user.findOne({"username": req.user.username})
+    console.log('writer', writer)
+    }catch{(e)=>{
+        console.log('have erroe  when find user to write blog\n', err)
+    }}
+    
     const post = new postModel({
+        '_writter': writer._id,
         'title' : req.body.data.title,
         'content': req.body.data.content,
         'date': new Date()
@@ -52,6 +61,7 @@ async function  postBlog (req,res){
         console.log("error when compare Title",err)
     })
     console.log(post.isNew)
+    console.log(post)
     post.save()
     .then(()=>{
         console.log("save into db")

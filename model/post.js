@@ -1,7 +1,7 @@
 
 const mongoose = require('mongoose')
 const postSchema = mongoose.Schema({
-    'writter': {type : mongoose.Schema.Types.ObjectId, ref : 'user'},
+    '_writter': {type : mongoose.Schema.Types.ObjectId, ref : 'user'},
     'title': {type: String, require: true},
     'content': {type: Object, require: true},
     'date': {type: Date}
