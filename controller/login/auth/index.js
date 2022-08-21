@@ -19,6 +19,7 @@ function loginAuth(){
                 if(err){
                     reject(err)
                 }else{
+                     
                     resolve(sucess)
                 }
             })
@@ -32,6 +33,7 @@ function loginAuth(){
                     return passToSerialUserCb(null,false)
                 }
                 if(password == sucess.password){
+                    console.log(password)
                     return passToSerialUserCb(null,{username, password, message: "Verified"})
                 }
                 else{

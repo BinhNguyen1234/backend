@@ -2,11 +2,10 @@ const express = require('express');
 const app = express();
 const routesAppend = require("./routes/")
 const bodyParser = require("body-parser")
-const PORT = 2000;
+const PORT = 1000;
 const Database = require("./config/Database")
 
-import ReactDOMServer from "react-dom/server";
-import { StaticRouter } from "react-router-dom/server";
+
 
 
 /** init app */
